@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Matéo Fourquet — Quant Trader & Systematic Researcher</title>
+<meta name="description" content="Systematic crypto strategies, run live on personal capital. Lead–lag and liquidation-driven research on perpetuals, low-latency execution in Rust and Python.">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:#0b0c0e;color:#ecede8;font-family:'Newsreader',Georgia,serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:#ecede8;text-decoration:none}
+  a:hover{color:#ffffff}
+  ::selection{background:rgba(236,237,232,.18);color:#fff}
+  ::-webkit-scrollbar{width:10px;height:10px}
+  ::-webkit-scrollbar-thumb{background:#1d1f23;border-radius:6px}
+  ::-webkit-scrollbar-track{background:#0b0c0e}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</helmet>
+
+<div style="min-height:100vh">
+
+<!-- LEFT RAIL -->
+<aside style="position:fixed;top:0;left:0;bottom:0;width:216px;z-index:50;border-right:1px solid rgba(236,237,232,.09);display:flex;flex-direction:column;justify-content:space-between;padding:28px 26px;background:rgba(11,12,14,.6);backdrop-filter:blur(8px)">
+  <div>
+    <a href="#top" style="font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;letter-spacing:.04em;color:#ecede8">MATÉO<br>FOURQUET</a>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#75786f;letter-spacing:.08em;margin-top:8px;line-height:1.6">QUANT TRADER<br>SYSTEMATIC RESEARCH</div>
+  </div>
+  <nav style="display:flex;flex-direction:column;gap:2px">
+    <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="4">
+      <a href="{{ n.href }}" onMouseEnter="{{ n.enter }}" onMouseLeave="{{ n.leave }}" style="display:flex;align-items:baseline;gap:12px;padding:9px 10px;margin-left:-10px;border-radius:6px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.04em;color:{{ n.color }};background:{{ n.bg }};transition:color .15s,background .15s">
+        <span style="font-size:10.5px;color:{{ n.numColor }};transition:color .15s">{{ n.num }}</span>{{ n.label }}
+      </a>
+    </sc-for>
+  </nav>
+  <div style="display:flex;flex-direction:column;gap:10px">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;line-height:1.7;color:#75786f;letter-spacing:.06em">OPEN TO INTERNSHIPS<br>FROM JUN 2026</div>
+    <a href="uploads/CV_Mateo_Fourquet_v4.pdf" target="_blank" style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#b9bbb2;border-bottom:1px solid rgba(236,237,232,.25);align-self:flex-start;padding-bottom:2px" style-hover="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#fff;border-bottom:1px solid rgba(255,255,255,.7);align-self:flex-start;padding-bottom:2px">Résumé ↗</a>
+    <a href="mailto:mateo.fourquet@skema.edu" style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#75786f" style-hover="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#ecede8">mateo.fourquet@skema.edu</a>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<main style="margin-left:216px">
+<div style="max-width:960px;margin:0 auto;padding:0 48px">
+
+  <!-- HERO -->
+  <section id="top" data-screen-label="Hero" style="padding:110px 0 64px;animation:fadeUp .7s ease both">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#75786f;letter-spacing:.18em;margin-bottom:28px">SKEMA × NC STATE — MSc FINANCIAL MARKETS &amp; INVESTMENTS</div>
+    <h1 style="margin:0;font-size:64px;line-height:1.04;font-weight:500;letter-spacing:-.015em">Systematic strategies,<br>run live on personal capital.</h1>
+    <p style="margin:26px 0 0;font-size:20px;line-height:1.6;color:#a8aaa1;font-style:italic;max-width:620px">I research lead–lag and liquidation-driven structure in crypto perpetuals, validate it under pre-registered protocols, and execute it with low-latency infrastructure in Rust and Python.</p>
+    <div style="display:flex;gap:14px;margin-top:38px;flex-wrap:wrap">
+      <a href="#strategies" style="padding:12px 22px;border-radius:8px;background:#ecede8;color:#0b0c0e;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;letter-spacing:.02em" style-hover="padding:12px 22px;border-radius:8px;background:#ffffff;color:#0b0c0e;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;letter-spacing:.02em">VIEW STRATEGIES →</a>
+      <a href="#contact" style="padding:12px 22px;border-radius:8px;border:1px solid rgba(236,237,232,.18);color:#ecede8;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.02em" style-hover="padding:12px 22px;border-radius:8px;border:1px solid rgba(236,237,232,.45);color:#fff;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.02em;background:rgba(236,237,232,.04)">GET IN TOUCH</a>
+    </div>
+
+    <!-- terminal overview -->
+    <div style="margin-top:64px;border:1px solid rgba(236,237,232,.1);border-radius:10px;background:#0e0f11;overflow:hidden;animation:fadeUp .7s .12s ease both">
+      <div style="display:flex;align-items:center;gap:7px;padding:10px 14px;border-bottom:1px solid rgba(236,237,232,.08)">
+        <span style="width:9px;height:9px;border-radius:50%;background:#f0664e"></span>
+        <span style="width:9px;height:9px;border-radius:50%;background:#f5b301"></span>
+        <span style="width:9px;height:9px;border-radius:50%;background:#2fd074"></span>
+        <span style="margin-left:10px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#75786f">~/mateo — overview</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1px 1fr;gap:0">
+        <div style="padding:18px 22px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;line-height:2.05;color:#b9bbb2">
+          <div style="color:#75786f">$ strategies --status</div>
+          <sc-for list="{{ readout }}" as="row" hint-placeholder-count="4">
+            <div style="display:flex;justify-content:space-between;gap:12px">
+              <span style="color:#8f9289">{{ row.name }}</span>
+              <span style="color:{{ row.color }}">{{ row.state }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="background:rgba(236,237,232,.08)"></div>
+        <div style="padding:18px 22px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;line-height:2.05;color:#b9bbb2">
+          <div style="color:#75786f">$ live --pnl <span style="color:#5c5f57">(realised)</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:#8f9289">lead-lag</span><span style="color:#ecede8;font-weight:600">+30% · 4mo</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:#8f9289">insider-det</span><span style="color:#ecede8;font-weight:600">+435% · 2mo</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:#8f9289">capital</span><span style="color:#ecede8">personal</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:#8f9289">execution</span><span style="color:#ecede8">Rust · Python</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRATEGIES -->
+  <section id="strategies" data-screen-label="Strategies" style="padding:56px 0 24px;border-top:1px solid rgba(236,237,232,.09);scroll-margin-top:24px">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap">
+      <div style="display:flex;align-items:baseline;gap:16px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#75786f;letter-spacing:.14em">01</span>
+        <h2 style="margin:0;font-size:36px;font-weight:500;letter-spacing:-.01em">Trading strategies</h2>
+      </div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#75786f;letter-spacing:.04em">{{ stratCount }} STRATEGIES · WALK-FORWARD · FEES MODELLED</div>
+    </div>
+    <p style="margin:14px 0 0;font-size:16.5px;color:#a8aaa1;line-height:1.65;max-width:560px">Researched and validated on Hyperliquid perpetuals. Select any card for the full tearsheet — thesis, equity curve, metrics and methodology.</p>
+
+    <div style="display:flex;align-items:center;justify-content:flex-end;gap:8px;margin-top:26px">
+      <button onClick="{{ scrollPrev }}" style="width:36px;height:36px;border-radius:8px;border:1px solid rgba(236,237,232,.16);background:transparent;color:#b9bbb2;font-size:16px;cursor:pointer;display:grid;place-items:center;line-height:1" style-hover="width:36px;height:36px;border-radius:8px;border:1px solid rgba(236,237,232,.4);background:rgba(236,237,232,.05);color:#fff;font-size:16px;cursor:pointer;display:grid;place-items:center;line-height:1">←</button>
+      <button onClick="{{ scrollNext }}" style="width:36px;height:36px;border-radius:8px;border:1px solid rgba(236,237,232,.16);background:transparent;color:#b9bbb2;font-size:16px;cursor:pointer;display:grid;place-items:center;line-height:1" style-hover="width:36px;height:36px;border-radius:8px;border:1px solid rgba(236,237,232,.4);background:rgba(236,237,232,.05);color:#fff;font-size:16px;cursor:pointer;display:grid;place-items:center;line-height:1">→</button>
+    </div>
+    <div ref="{{ trackRef }}" onMouseEnter="{{ pauseAuto }}" onMouseLeave="{{ resumeAuto }}" style="display:flex;gap:20px;overflow-x:auto;padding:14px 2px 10px;scrollbar-width:none;-ms-overflow-style:none">
+      <sc-for list="{{ strategiesLoop }}" as="s" hint-placeholder-count="3">
+        <div onClick="{{ s.open }}" style="flex:0 0 344px;cursor:pointer;border:1px solid rgba(236,237,232,.11);border-radius:10px;background:#0e0f11;padding:22px;display:flex;flex-direction:column;gap:15px;transition:border-color .25s" style-hover="flex:0 0 344px;cursor:pointer;border:1px solid rgba(236,237,232,.34);border-radius:10px;background:#101114;padding:22px;display:flex;flex-direction:column;gap:15px">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.12em;color:{{ s.statusFg }}">● {{ s.statusLabel }}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#75786f">{{ s.tf }}</span>
+          </div>
+          <div>
+            <div style="font-size:21px;font-weight:500;letter-spacing:-.005em;line-height:1.25">{{ s.name }}</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#75786f;margin-top:5px;letter-spacing:.03em">{{ s.market }}</div>
+          </div>
+          <svg viewBox="0 0 260 72" preserveAspectRatio="none" style="width:100%;height:72px;display:block">
+            <path d="{{ s.areaPath }}" fill="{{ s.areaFill }}"></path>
+            <path d="{{ s.miniPath }}" fill="none" stroke="{{ s.lineColor }}" stroke-width="{{ s.strokeMini }}" stroke-linejoin="round" stroke-linecap="round" style="filter:{{ s.glow }}"></path>
+          </svg>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;border-top:1px solid rgba(236,237,232,.08);padding-top:13px">
+            <sc-for list="{{ s.topMetrics }}" as="m" hint-placeholder-count="3">
+              <div>
+                <div style="font-family:'IBM Plex Mono',monospace;font-size:15.5px;font-weight:600;color:{{ m.color }}">{{ m.v }}</div>
+                <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#75786f;margin-top:3px;letter-spacing:.05em">{{ m.kUp }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#8f9289;margin-top:auto;letter-spacing:.04em">TEARSHEET →</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" data-screen-label="Projects" style="padding:56px 0 40px;border-top:1px solid rgba(236,237,232,.09);margin-top:32px;scroll-margin-top:24px">
+    <div style="display:flex;align-items:baseline;gap:16px">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#75786f;letter-spacing:.14em">02</span>
+      <h2 style="margin:0;font-size:36px;font-weight:500;letter-spacing:-.01em">Engineering</h2>
+    </div>
+    <div style="margin-top:34px;display:flex;flex-direction:column">
+      <sc-for list="{{ projects }}" as="p" hint-placeholder-count="2">
+        <div style="display:grid;grid-template-columns:300px 1fr;gap:36px;padding:26px 0;border-top:1px solid rgba(236,237,232,.09)">
+          <div>
+            <div style="font-size:21px;font-weight:500;line-height:1.3">{{ p.name }}</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#75786f;margin-top:6px;letter-spacing:.04em">{{ p.sub }}</div>
+          </div>
+          <div>
+            <p style="margin:0;font-size:16px;line-height:1.65;color:#b9bbb2">{{ p.desc }}</p>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#75786f;margin-top:12px;letter-spacing:.03em">{{ p.stackLine }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- PROFILE -->
+  <section id="about" data-screen-label="Profile" style="padding:56px 0 40px;border-top:1px solid rgba(236,237,232,.09);scroll-margin-top:24px">
+    <div style="display:flex;align-items:baseline;gap:16px">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#75786f;letter-spacing:.14em">03</span>
+      <h2 style="margin:0;font-size:36px;font-weight:500;letter-spacing:-.01em">Profile</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:1.05fr .95fr;gap:52px;margin-top:34px">
+      <div>
+        <p style="margin:0 0 18px;font-size:17px;line-height:1.75;color:#c9cbc2">I'm a quant researcher focused on systematic strategies in crypto perpetuals and low-latency execution. My thesis studies lead–lag structure in crypto perpetuals — three systematic strategies plus a Rust HFT cross-venue arbitrage bot, all running with personal capital.</p>
+        <p style="margin:0;font-size:17px;line-height:1.75;color:#c9cbc2">Before that: FX derivatives structuring at IbanFirst (&gt;€50M hedged) and Web3 VC research at 50 Partners. Seeking a Quant Trader / Systematic Researcher internship from June 2026 — open to international relocation.</p>
+        <div style="margin-top:34px;display:flex;flex-direction:column">
+          <sc-for list="{{ timeline }}" as="e" hint-placeholder-count="3">
+            <div style="display:grid;grid-template-columns:118px 1fr;gap:18px;padding:14px 0;border-top:1px solid rgba(236,237,232,.09);align-items:baseline">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#75786f;letter-spacing:.03em">{{ e.date }}</span>
+              <div>
+                <div style="font-size:16.5px;font-weight:500;color:#ecede8">{{ e.title }}</div>
+                <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#75786f;margin-top:3px">{{ e.org }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column">
+        <sc-for list="{{ skillRows }}" as="g" hint-placeholder-count="5">
+          <div style="padding:14px 0;border-top:1px solid rgba(236,237,232,.09)">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#75786f;letter-spacing:.12em;margin-bottom:7px">{{ g.label }}</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;line-height:1.9;color:#c9cbc2">{{ g.line }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" data-screen-label="Contact" style="padding:72px 0 56px;border-top:1px solid rgba(236,237,232,.09);scroll-margin-top:24px">
+    <div style="display:flex;align-items:baseline;gap:16px">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#75786f;letter-spacing:.14em">04</span>
+      <h2 style="margin:0;font-size:36px;font-weight:500;letter-spacing:-.01em">Contact</h2>
+    </div>
+    <p style="margin:26px 0 0;font-size:30px;line-height:1.45;font-weight:400;max-width:700px">Let's talk strategy, execution, or a June 2026 internship<span style="font-style:italic;color:#a8aaa1"> — I answer fast.</span></p>
+    <div style="display:flex;flex-wrap:wrap;gap:28px;margin-top:36px;font-family:'IBM Plex Mono',monospace;font-size:13px">
+      <a href="mailto:mateo.fourquet@skema.edu" style="color:#ecede8;border-bottom:1px solid rgba(236,237,232,.3);padding-bottom:3px" style-hover="color:#fff;border-bottom:1px solid rgba(255,255,255,.8);padding-bottom:3px">mateo.fourquet@skema.edu</a>
+      <a href="https://linkedin.com/in/mateofrqt" target="_blank" style="color:#b9bbb2;border-bottom:1px solid rgba(236,237,232,.18);padding-bottom:3px" style-hover="color:#fff;border-bottom:1px solid rgba(255,255,255,.8);padding-bottom:3px">linkedin/mateofrqt ↗</a>
+      <a href="https://github.com/mateofrqt" target="_blank" style="color:#b9bbb2;border-bottom:1px solid rgba(236,237,232,.18);padding-bottom:3px" style-hover="color:#fff;border-bottom:1px solid rgba(255,255,255,.8);padding-bottom:3px">github/mateofrqt ↗</a>
+    </div>
+    <div style="margin-top:70px;padding-top:18px;border-top:1px solid rgba(236,237,232,.09);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#75786f;letter-spacing:.04em">
+      <span>© {{ year }} MATÉO FOURQUET</span>
+      <span>LIVING PROTOTYPE · V2</span>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<!-- STRATEGY DETAIL MODAL -->
+<sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeStrat }}" style="position:fixed;inset:0;z-index:100;background:rgba(7,8,9,.78);backdrop-filter:blur(7px);display:flex;align-items:flex-start;justify-content:center;padding:56px 20px;overflow-y:auto;animation:fadeUp .22s ease both">
+    <div onClick="{{ stop }}" style="width:100%;max-width:780px;border:1px solid rgba(236,237,232,.14);border-radius:12px;background:#0e0f11;box-shadow:0 40px 100px -30px rgba(0,0,0,.9)">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:28px 32px 22px;border-bottom:1px solid rgba(236,237,232,.09)">
+        <div>
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:12px;font-family:'IBM Plex Mono',monospace">
+            <span style="font-size:10.5px;letter-spacing:.12em;color:{{ activeStrat.statusFg }}">● {{ activeStrat.statusLabel }}</span>
+            <span style="font-size:11px;color:#75786f">{{ activeStrat.tf }} · {{ activeStrat.market }}</span>
+          </div>
+          <h3 style="margin:0;font-size:30px;font-weight:500;letter-spacing:-.01em">{{ activeStrat.name }}</h3>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#75786f;margin-top:8px;letter-spacing:.02em">{{ activeStrat.period }}</div>
+        </div>
+        <button onClick="{{ closeStrat }}" style="flex:none;width:34px;height:34px;border-radius:8px;border:1px solid rgba(236,237,232,.14);background:transparent;color:#b9bbb2;font-size:17px;cursor:pointer;line-height:1" style-hover="flex:none;width:34px;height:34px;border-radius:8px;border:1px solid rgba(236,237,232,.4);background:rgba(236,237,232,.06);color:#fff;font-size:17px;cursor:pointer;line-height:1">✕</button>
+      </div>
+      <div style="padding:26px 32px 32px">
+
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#75786f;letter-spacing:.12em;margin-bottom:10px">I · OVERVIEW</div>
+        <p style="margin:0 0 26px;font-size:17px;line-height:1.7;color:#c9cbc2">{{ activeStrat.thesis }}</p>
+
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#75786f;letter-spacing:.12em;margin-bottom:10px">II · TERMS</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;column-gap:32px;margin-bottom:26px">
+          <sc-for list="{{ activeStrat.specs }}" as="sp" hint-placeholder-count="6">
+            <div style="display:grid;grid-template-columns:128px 1fr;gap:12px;padding:9px 0;border-top:1px solid rgba(236,237,232,.08);align-items:baseline">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#75786f;letter-spacing:.06em">{{ sp.k }}</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#c9cbc2;line-height:1.55">{{ sp.v }}</span>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#75786f;letter-spacing:.12em;margin-bottom:10px">III · PERFORMANCE</div>
+        <div style="border:1px solid rgba(236,237,232,.09);border-radius:10px;background:#0b0c0e;padding:16px 16px 8px;margin-bottom:12px">
+          <div style="display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#75786f;margin-bottom:8px;letter-spacing:.1em"><span>EQUITY CURVE (NORMALISED)</span><span>{{ activeStrat.tfUp }}</span></div>
+          <svg viewBox="0 0 720 240" preserveAspectRatio="none" style="width:100%;height:220px;display:block">
+            <path d="{{ activeStrat.bigArea }}" fill="{{ activeStrat.areaFill }}"></path>
+            <path d="{{ activeStrat.bigPath }}" fill="none" stroke="{{ activeStrat.lineColor }}" stroke-width="{{ activeStrat.strokeBig }}" stroke-linejoin="round" stroke-linecap="round" style="filter:{{ activeStrat.glowBig }}"></path>
+          </svg>
+        </div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#5c5f57;letter-spacing:.04em;margin-bottom:14px">Illustrative curve, generated to match reported figures. Actual curves available on request.</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:26px">
+          <sc-for list="{{ activeStrat.metricList }}" as="m" hint-placeholder-count="6">
+            <div style="border:1px solid rgba(236,237,232,.09);border-radius:8px;padding:13px 15px">
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:19px;font-weight:600;color:{{ m.color }}">{{ m.v }}</div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#75786f;margin-top:4px;letter-spacing:.06em">{{ m.kUp }}</div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#75786f;letter-spacing:.12em;margin-bottom:6px">IV · VALIDATION PROTOCOL</div>
+        <div style="display:flex;flex-direction:column;margin-bottom:26px">
+          <sc-for list="{{ activeStrat.validationRows }}" as="d" hint-placeholder-count="3">
+            <div style="display:grid;grid-template-columns:34px 1fr;gap:10px;padding:11px 0;border-top:1px solid rgba(236,237,232,.08);font-size:15px;line-height:1.6;color:#b9bbb2">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#75786f;padding-top:3px">{{ d.num }}</span><span>{{ d.text }}</span>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#75786f;letter-spacing:.12em;margin-bottom:6px">V · RISK &amp; CAPACITY</div>
+        <div style="display:flex;flex-direction:column;margin-bottom:26px">
+          <sc-for list="{{ activeStrat.riskRows }}" as="d" hint-placeholder-count="3">
+            <div style="display:grid;grid-template-columns:34px 1fr;gap:10px;padding:11px 0;border-top:1px solid rgba(236,237,232,.08);font-size:15px;line-height:1.6;color:#b9bbb2">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#75786f;padding-top:3px">{{ d.num }}</span><span>{{ d.text }}</span>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="border:1px solid rgba(236,237,232,.1);border-radius:8px;padding:14px 18px;font-family:'IBM Plex Mono',monospace;font-size:11px;line-height:1.7;color:#75786f;letter-spacing:.02em">ABRIDGED TEARSHEET — signal construction, parameters and thresholds intentionally withheld. Full documentation, trade logs and code walkthrough available in interview settings. Past performance is not indicative of future results.</div>
+      </div>
+    </div>
+  </div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#2fd074&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Feel&quot;,&quot;options&quot;:[&quot;#2fd074&quot;,&quot;#4b9dff&quot;,&quot;#f5b301&quot;,&quot;#a78bfa&quot;,&quot;#ecede8&quot;]},&quot;surface&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Black&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Feel&quot;,&quot;options&quot;:[&quot;Black&quot;,&quot;Slate&quot;,&quot;Midnight&quot;]},&quot;chartStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Area&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Feel&quot;,&quot;options&quot;:[&quot;Area&quot;,&quot;Line&quot;,&quot;Glow&quot;]}}">
+class Component extends DCLogic {
+  state = { active: null, section: 'top', hoverNav: null };
+  trackRef = React.createRef();
+
+  scrollTrack(dir){
+    const el = this.trackRef.current;
+    if(!el) return;
+    // pause auto-scroll so it doesn't fight the animation, resume shortly after
+    this._paused = true;
+    clearTimeout(this._resumeT);
+    this._resumeT = setTimeout(()=>{ this._paused = false; }, 1600);
+
+    const CARD = 364; // card width + gap
+    const half = el.scrollWidth/2;
+    if(dir < 0 && el.scrollLeft < CARD) el.scrollLeft += half;      // wrap back
+    if(dir > 0 && el.scrollLeft >= half - CARD) el.scrollLeft -= half; // wrap fwd
+    // snap target to the card grid for a clean, predictable step
+    const target = (Math.round(el.scrollLeft / CARD) + dir) * CARD;
+    el.scrollTo({ left: target, behavior:'smooth' });
+  }
+
+  startAuto(){
+    const step = () => {
+      const el = this.trackRef.current;
+      if(el && !this._paused && el.scrollWidth > el.clientWidth){
+        this._acc = (this._acc || 0) + 0.08;
+        const whole = Math.floor(this._acc);
+        if(whole){ el.scrollLeft += whole; this._acc -= whole; }
+        const half = el.scrollWidth/2;
+        if(el.scrollLeft >= half) el.scrollLeft -= half;
+      }
+      this._raf = requestAnimationFrame(step);
+    };
+    this._raf = requestAnimationFrame(step);
+  }
+
+  startSpy(){
+    const ids=['strategies','projects','about','contact'];
+    const onScroll=()=>{
+      if(this._spyTick) return;
+      this._spyTick=true;
+      requestAnimationFrame(()=>{
+        this._spyTick=false;
+        const line=window.innerHeight*0.35;           // reference line at 35% viewport
+        let cur='top';
+        for(const id of ids){
+          const el=document.getElementById(id);
+          if(el && el.getBoundingClientRect().top<=line) cur=id;  // last section whose top passed the line
+        }
+        // bottom of page → force last section
+        if(window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-4) cur=ids[ids.length-1];
+        if(cur!==this.state.section) this.setState({section:cur});
+      });
+    };
+    this._onScroll=onScroll;
+    window.addEventListener('scroll', onScroll, {passive:true});
+    window.addEventListener('resize', onScroll, {passive:true});
+    onScroll();
+  }
+
+  componentWillUnmount(){
+    if(this._raf) cancelAnimationFrame(this._raf);
+    if(this._onScroll){ window.removeEventListener('scroll', this._onScroll); window.removeEventListener('resize', this._onScroll); }
+    clearTimeout(this._resumeT);
+  }
+
+  mulberry32(a){ return function(){ a|=0; a=a+0x6D2B79F5|0; let t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
+
+  makeCurve(seed, endMult, vol, n){
+    n = n || 170;
+    const rng = this.mulberry32(seed);
+    const drift = Math.pow(endMult, 1/n) - 1;
+    let v = 1; const arr = [1];
+    for(let i=1;i<n;i++){ const noise=(rng()-0.5)*2*vol; v=v*(1+drift+noise); if(v<0.15)v=0.15; arr.push(v); }
+    arr.push(endMult);
+    return arr;
+  }
+
+  pathFor(arr, w, h, pad){
+    pad = pad==null ? 6 : pad;
+    let mn=Math.min.apply(null,arr), mx=Math.max.apply(null,arr);
+    if(mx-mn < 1e-9) mx = mn + 1;
+    const n=arr.length;
+    const x=i=> pad + (w-2*pad)*(i/(n-1));
+    const y=val=> (h-pad) - (h-2*pad)*((val-mn)/(mx-mn));
+    let d='M '+x(0).toFixed(1)+' '+y(arr[0]).toFixed(1);
+    for(let i=1;i<n;i++) d+=' L '+x(i).toFixed(1)+' '+y(arr[i]).toFixed(1);
+    const area = d + ' L '+x(n-1).toFixed(1)+' '+h+' L '+x(0).toFixed(1)+' '+h+' Z';
+    return { line:d, area:area };
+  }
+
+  hexA(h, a){
+    h=(h||'#2fd074').replace('#','');
+    if(h.length===3) h=h.split('').map(c=>c+c).join('');
+    const n=parseInt(h,16);
+    return 'rgba('+((n>>16)&255)+','+((n>>8)&255)+','+(n&255)+','+a+')';
+  }
+
+  statusStyle(status, accent){
+    if(status==='live') return { label:'LIVE', fg:accent, line:accent, fill:this.hexA(accent,.10), fillStrong:this.hexA(accent,.24) };
+    const am='#f5b301';
+    return { label:'RESEARCH', fg:am, line:am, fill:this.hexA(am,.10), fillStrong:this.hexA(am,.24) };
+  }
+
+  chartCfg(style){
+    if(style==='Line')  return { fillMode:'none',   strokeMini:2,   strokeBig:2.5, glowOn:false };
+    if(style==='Glow')  return { fillMode:'strong', strokeMini:2.5, strokeBig:3,   glowOn:true  };
+    return                     { fillMode:'normal', strokeMini:2,   strokeBig:2.5, glowOn:false };
+  }
+
+  applySurface(){
+    const map={ Black:'#0b0c0e', Slate:'#101317', Midnight:'#0b1020' };
+    const bg=map[this.props.surface]||'#0b0c0e';
+    if(typeof document!=='undefined' && document.body) document.body.style.background=bg;
+  }
+  componentDidMount(){ this.applySurface(); this.startAuto(); this.startSpy(); }
+  componentDidUpdate(){ this.applySurface(); }
+
+  strategyData(){
+    return [
+      { id:'reversal-15m', name:'Reversal 15m · Liquidation Fade', tf:'15-Minute', market:'Hyperliquid Perps (~377 coins)', status:'research',
+        period:'Jul 2025 → Jul 2026 · pre-registered walk-forward · 2,632 events (1,868 train / 764 test)',
+        thesis:'A mean-reversion strategy that fades violent 15-minute moves — but only those driven by forced liquidation cascades. Liquidations are mechanical, non-informed flow that pushes price past equilibrium; once the pressure exhausts, price reverts. The strategy conditions entry on the share of bar volume attributable to liquidations, sells the panic, buys the euphoria, and exits on a fixed horizon. The exact conditioning variable, thresholds and event definition are withheld.',
+        curveSeed:41, curveEnd:3.43, vol:0.052,
+        metricList:[
+          {k:'Total return',v:'+243%',color:'#2fd074'},
+          {k:'Sharpe',v:'3.69',color:'#2fd074'},
+          {k:'Max drawdown',v:'-17.5%',color:'#f0664e'},
+          {k:'Hit rate',v:'57%',color:'#2fd074'},
+          {k:'Bps / trade',v:'+84',color:'#2fd074'},
+          {k:'Sortino',v:'4.86',color:'#2fd074'},
+          {k:'Trades',v:'1,556',color:'#ecede8'},
+          {k:'OOS Sharpe',v:'5.19',color:'#2fd074'},
+          {k:'Robust to',v:'50 bps',color:'#ecede8'} ],
+        specs:[
+          {k:'STYLE', v:'Event-driven mean reversion'},
+          {k:'UNIVERSE', v:'~377 Hyperliquid perpetuals'},
+          {k:'SAMPLE', v:'Jul 2025 → Jul 2026, 15m bars + liquidation feed'},
+          {k:'HOLDING', v:'Fixed horizon (~1h), no stop / no TP'},
+          {k:'SIZING', v:'Fixed fraction, concurrency-capped'},
+          {k:'COSTS', v:'30 bps round-trip modelled'},
+          {k:'EXECUTION', v:'Event bar close, taker'},
+          {k:'CAPACITY', v:'~$10k–100k (participation-bounded)'} ],
+        validation:[
+          'Protocol pre-registered before any results were computed: hypotheses, event definition, split date and success criteria frozen in advance.',
+          'Chronological train/test split (Mar 2026). All thresholds calibrated on train only; test touched once. Edge consistent across the split: +74 bps/trade in-sample, +101 out-of-sample.',
+          '13 candidate conditioning variables screened under an anti-datamining protocol; a single variable survives. ML classifiers tested and rejected — they do not beat the raw rule.',
+          'Every backtest passes no-look-ahead, accounting-conservation and cross-engine checks; t-statistics clustered by day.',
+          'Monthly jackknife: Sharpe stays in the 3.2–4.4 band with any single month removed. Edge survives costs stressed to 50 bps.' ],
+        risks:[
+          'Tail risk: cascades that outlast the holding window (observed Oct 2025). No intra-hold stop by design — the cost of stops exceeded their benefit in testing.',
+          'Deliberately small capacity: position notional bounded by a participation filter on hourly dollar-volume. High return on small capital, not a large-AUM vehicle.',
+          'Single-venue microstructure dependence: the edge is tied to one exchange\u2019s liquidation mechanics and could decay if they change.' ] },
+      { id:'lead-lag', name:'Cross-Sectional Lead-Lag', tf:'Daily', market:'Hyperliquid Perps', status:'live',
+        period:'Feb 2025 → Apr 2026 backtest · live on personal capital since',
+        thesis:'A market-neutral long/short book across ~220 Hyperliquid perpetuals, built on lead–lag structure: part of the universe systematically incorporates information later than the rest. Assets are ranked cross-sectionally each day and the book is rebalanced into the extremes of that ranking. The ranking signal, lookback structure and portfolio weights are withheld.',
+        curveSeed:7, curveEnd:2.72, vol:0.085,
+        metricList:[
+          {k:'Return (14mo)',v:'+172%',color:'#2fd074'},
+          {k:'Sharpe',v:'1.69',color:'#2fd074'},
+          {k:'Win rate',v:'49.6%',color:'#2fd074'},
+          {k:'Profit factor',v:'1.26',color:'#2fd074'},
+          {k:'Rebalance cycles',v:'385',color:'#ecede8'},
+          {k:'Distinct assets',v:'123',color:'#ecede8'} ],
+        specs:[
+          {k:'STYLE', v:'Cross-sectional L/S, market-neutral'},
+          {k:'UNIVERSE', v:'~220 Hyperliquid perpetuals'},
+          {k:'SAMPLE', v:'Feb 2025 → Apr 2026, daily bars'},
+          {k:'REBALANCE', v:'Daily, scheduled'},
+          {k:'COSTS', v:'Fees + spread fully modelled'},
+          {k:'EXECUTION', v:'Live — REST + WebSocket, ALO routing'},
+          {k:'RISK MODULE', v:'Vol targeting · DD circuit breaker · intraday stop'},
+          {k:'STATUS', v:'Running on personal capital'} ],
+        validation:[
+          '14-month walk-forward with fees and spread modelled throughout; no parameter re-fitting inside the evaluation window.',
+          'Signal robustness checked across lookback perturbations and universe subsets before deployment.',
+          'Live deployment serves as the ongoing out-of-sample test; realised fills and slippage reconciled against backtest assumptions.' ],
+        risks:[
+          'Edge depends on cross-sectional dispersion; compresses in strongly one-directional markets.',
+          'Daily rebalance cadence caps turnover but exposes the book to overnight gap risk on individual names.',
+          'Venue concentration: universe, funding and fee structure tied to a single exchange.' ] },
+      { id:'session', name:'Session-Filtered Directional', tf:'15-Minute', market:'Hyperliquid Perps', status:'research',
+        period:'Econometric study · n = 436 observations · thesis chapter',
+        thesis:'A directional strategy built on a lead–lag relationship that only exists during specific trading sessions — the market microstructure differs enough across sessions that the same signal is tradeable in one window and pure noise in another. The signal is taken directional, gated by session. Which relationship, which sessions and the gating rule are withheld.',
+        curveSeed:19, curveEnd:1.62, vol:0.055,
+        metricList:[
+          {k:'Sharpe',v:'2.51',color:'#2fd074'},
+          {k:'Profit factor',v:'1.89',color:'#2fd074'},
+          {k:'p-value',v:'0.014',color:'#ecede8'},
+          {k:'Observations',v:'436',color:'#ecede8'},
+          {k:'Bootstrap PF p',v:'3.5%',color:'#ecede8'} ],
+        specs:[
+          {k:'STYLE', v:'Directional, session-gated'},
+          {k:'INSTRUMENT', v:'Hyperliquid perpetuals'},
+          {k:'BARS', v:'15-minute'},
+          {k:'METHOD', v:'Pooled OLS, HC3 robust SE'},
+          {k:'SAMPLE', v:'n = 436 event observations'},
+          {k:'STATUS', v:'Research — pre-deployment'} ],
+        validation:[
+          'Lead–lag coefficient significant at the 5% level (p = 0.014) under pooled OLS with HC3 heteroskedasticity-robust standard errors.',
+          'Economic significance validated separately from statistical significance: profit factor of 1.89 confirmed by bootstrap resampling (p = 3.5%).',
+          'Session gating tested against the ungated baseline — the edge concentrates where the microstructure hypothesis predicts it should.' ],
+        risks:[
+          'Modest sample size (n = 436): confidence intervals on the edge remain wide; position sizing must reflect that.',
+          'Session structure is a market convention, not a law — the pattern can migrate or decay as participation shifts.',
+          'Not yet deployed: live slippage and fill quality remain to be measured against modelled assumptions.' ] },
+      { id:'volspread', name:'Pairwise Vol-Spread', tf:'1-Minute', market:'Hyperliquid Perps', status:'research',
+        period:'Hyperparameter study · strict IS / OOS holdout',
+        thesis:'A high-frequency relative-value signal trading the volatility spread between paired instruments at 1-minute resolution. Hyperparameters are selected by Bayesian search (Optuna TPE) on an in-sample window, then frozen and evaluated once on a held-out period. Pair selection, spread construction and the parameter space are withheld.',
+        curveSeed:33, curveEnd:1.145, vol:0.028,
+        metricList:[
+          {k:'In-sample',v:'+14.5%',color:'#2fd074'},
+          {k:'Out-of-sample',v:'+6.8%',color:'#2fd074'},
+          {k:'Max DD (IS)',v:'-0.81%',color:'#f0664e'},
+          {k:'Max DD (OOS)',v:'-1.99%',color:'#f0664e'},
+          {k:'Resolution',v:'1-min',color:'#ecede8'},
+          {k:'Tuning',v:'TPE',color:'#ecede8'} ],
+        specs:[
+          {k:'STYLE', v:'Relative value, pairwise'},
+          {k:'INSTRUMENT', v:'Hyperliquid perpetual pairs'},
+          {k:'BARS', v:'1-minute'},
+          {k:'TUNING', v:'Optuna TPE, IS window only'},
+          {k:'EVALUATION', v:'Single-shot OOS holdout'},
+          {k:'STATUS', v:'Research — capacity study pending'} ],
+        validation:[
+          'Strict chronological in-sample / out-of-sample split; the holdout window was evaluated exactly once, after parameters were frozen.',
+          'Returns reported net of modelled costs on both windows: +14.5% IS, +6.8% OOS.',
+          'Drawdown profile shallow and consistent across windows (-0.81% IS, -1.99% OOS), in line with a high-turnover relative-value profile.' ],
+        risks:[
+          'At 1-minute resolution the edge is acutely sensitive to fees, queue position and latency; realised costs decide viability.',
+          'OOS performance roughly half of IS — expected attenuation, but a reminder the tuned optimum is partly sample-specific.',
+          'Requires a dedicated capacity and slippage study before any capital deployment.' ] }
+    ];
+  }
+
+  enrichStrategies(accent, cfg){
+    const self=this;
+    return this.strategyData().map(function(s, i){
+      const st=self.statusStyle(s.status, accent);
+      const arr=self.makeCurve(s.curveSeed, s.curveEnd, s.vol);
+      const mini=self.pathFor(arr, 260, 72, 5);
+      const big=self.pathFor(arr, 720, 240, 10);
+      const fill = cfg.fillMode==='none' ? 'none' : (cfg.fillMode==='strong' ? st.fillStrong : st.fill);
+      const glowMini = cfg.glowOn ? ('drop-shadow(0 0 4px '+self.hexA(st.line,.8)+')') : 'none';
+      const glowBig  = cfg.glowOn ? ('drop-shadow(0 0 8px '+self.hexA(st.line,.75)+')') : 'none';
+      const metricList = s.metricList.map(function(m){
+        const c = m.color==='#2fd074' ? accent : m.color;
+        return Object.assign({}, m, { color:c, kUp:m.k.toUpperCase() });
+      });
+      return Object.assign({}, s, {
+        statusLabel:st.label, statusFg:st.fg, lineColor:st.line, areaFill:fill,
+        strokeMini:cfg.strokeMini, strokeBig:cfg.strokeBig, glow:glowMini, glowBig:glowBig,
+        metricList:metricList,
+        specs:s.specs || [],
+        validationRows:(s.validation||[]).map(function(t,j){ return { num:(j+1<10?'0':'')+(j+1), text:t }; }),
+        riskRows:(s.risks||[]).map(function(t,j){ return { num:(j+1<10?'0':'')+(j+1), text:t }; }),
+        tfUp:s.tf.toUpperCase(),
+        miniPath:mini.line, areaPath:mini.area, bigPath:big.line, bigArea:big.area,
+        topMetrics:metricList.slice(0,3),
+        open:function(){ self.setState({active:i}); }
+      });
+    });
+  }
+
+  renderVals(){
+    const accent=this.props.accent || '#2fd074';
+    const cfg=this.chartCfg(this.props.chartStyle || 'Area');
+    const strategies=this.enrichStrategies(accent, cfg);
+    const active=this.state.active;
+    const sec=this.state.section;
+    const navDef=[
+      {href:'#strategies', num:'01', label:'STRATEGIES', id:'strategies'},
+      {href:'#projects',   num:'02', label:'ENGINEERING', id:'projects'},
+      {href:'#about',      num:'03', label:'PROFILE', id:'about'},
+      {href:'#contact',    num:'04', label:'CONTACT', id:'contact'}
+    ];
+    return {
+      year:2026,
+      accentColor:accent,
+      navItems:navDef.map((n)=>{
+        const on = sec===n.id;
+        const hov = this.state.hoverNav===n.id;
+        return Object.assign({}, n, {
+          color: hov ? accent : (on ? '#ffffff' : '#8f9289'),
+          numColor: (hov || on) ? accent : '#5c5f57',
+          bg: (hov || on) ? 'rgba(236,237,232,.06)' : 'transparent',
+          enter: ()=>this.setState({hoverNav:n.id}),
+          leave: ()=>this.setState({hoverNav:null})
+        });
+      }),
+      strategies:strategies,
+      strategiesLoop:strategies.concat(strategies),
+      stratCount:strategies.length,
+      trackRef:this.trackRef,
+      scrollPrev:()=>this.scrollTrack(-1),
+      scrollNext:()=>this.scrollTrack(1),
+      pauseAuto:()=>{ this._paused=true; },
+      resumeAuto:()=>{ this._paused=false; },
+      modalOpen: active!=null,
+      activeStrat: active!=null ? strategies[active] : {},
+      closeStrat:()=>this.setState({active:null}),
+      stop:(e)=>{ if(e&&e.stopPropagation) e.stopPropagation(); },
+      readout:[
+        {name:'lead-lag',     state:'● LIVE',     color:accent},
+        {name:'insider-det',  state:'● LIVE',     color:accent},
+        {name:'liq-fade-15m', state:'○ RESEARCH', color:'#f5b301'},
+        {name:'vol-spread-1m', state:'○ RESEARCH', color:'#f5b301'}
+      ],
+      projects:[
+        { name:'Rust HFT Arbitrage Bot', sub:'HYPE → POLYMARKET CROSS-VENUE · R&D, DISCONTINUED',
+          desc:'Tokio async pipeline ingesting HYPE best-bid/offer from Hyperliquid and firing FOK orders on the matching Polymarket prediction market, with EIP-712 signing on Polygon.',
+          stackLine:'Rust · tokio · alloy · EIP-712 · Polygon' },
+        { name:'Polymarket Insider Detector', sub:'BEHAVIOURAL ON-CHAIN SIGNAL',
+          desc:'Real-time detector scoring Polymarket wallets for insider-like behaviour (fresh wallet, concentrated capital, thematic dominance). Calibrated on 766M trades / 2.19M wallets, 2022–2026 walk-forward.',
+          stackLine:'Python · DuckDB · Flask · Telegram' }
+      ],
+      timeline:[
+        {date:'2023 — 2026', title:'MSc Financial Markets & Investments', org:'SKEMA BS × NC STATE UNIVERSITY'},
+        {date:'2024 · 6 MO', title:'VC Analyst, Web3 vertical', org:'50 PARTNERS — PARIS'},
+        {date:'2024 · 6 MO', title:'FX Derivatives Sales Intern', org:'IBANFIRST — PARIS'}
+      ],
+      skillRows:[
+        {label:'LANGUAGES', line:'Python · Rust · Solidity · SQL'},
+        {label:'QUANT METHODS', line:'Walk-forward · Bootstrap · HC3 SE · Pooled OLS · Vol targeting · TC modelling'},
+        {label:'PYTHON LIBRARIES', line:'NumPy · pandas · statsmodels · scipy · optuna · scikit-learn · TensorFlow'},
+        {label:'INFRASTRUCTURE', line:'Hyperliquid API · Polymarket CLOB · tokio async · lock-free SPSC'},
+        {label:'CERTIFICATIONS', line:'CFA Level II · ML Specialization (Stanford) · Bloomberg BMC'}
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
